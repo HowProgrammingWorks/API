@@ -5,7 +5,7 @@ const buildAPI = methods => {
   for (const method of methods) {
     api[method] = (...args) => new Promise((resolve, reject) => {
       const url = `/api/${method}`;
-      console.log(url);
+      console.log(url, args);
       fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,8 +34,9 @@ const scenario = async () => {
   await api.move('Rect1', 5, 5);
   await api.rotate('Rect1', 5);
   const data = await api.read('Rect1');
+  console.dir({ data })
   await show();
 };
 
-const api = buildAPI(['rect', 'move', 'rotate', 'read', 'render']);
+const api = buildAPI(['rect', 'move', 'rotate', 'read', 'render', 'resize']);
 scenario();
