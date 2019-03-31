@@ -1,3 +1,5 @@
+'use strict';
+
 const rotate = (point, angle) => {
   const sin = Math.sin(angle);
   const cos = Math.cos(angle);

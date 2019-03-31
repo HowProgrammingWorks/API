@@ -23,6 +23,8 @@ const buildAPI = methods => {
   return api;
 };
 
+const api = buildAPI(['rect', 'move', 'rotate', 'read', 'render', 'resize']);
+
 const show = async () => {
   const svg = await api.render('Rect1');
   const output = document.getElementById('output');
@@ -34,9 +36,8 @@ const scenario = async () => {
   await api.move('Rect1', 5, 5);
   await api.rotate('Rect1', 5);
   const data = await api.read('Rect1');
-  console.dir({ data })
+  console.dir({ data });
   await show();
 };
 
-const api = buildAPI(['rect', 'move', 'rotate', 'read', 'render', 'resize']);
 scenario();

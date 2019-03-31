@@ -1,3 +1,5 @@
+'use strict';
+
 const move = (point, x, y) => {
   point.x += x;
   point.y += y;

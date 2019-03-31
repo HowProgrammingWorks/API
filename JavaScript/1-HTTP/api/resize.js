@@ -1,3 +1,5 @@
+'use strict';
+
 const resize = (point, k) => {
   let { x, y } = point;
   x *= k;
