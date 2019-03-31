@@ -22,7 +22,7 @@ const cacheFile = name => {
     const method = require(filePath);
     api.set(key, method);
   } catch (e) {
-    cache.delete(name);
+    api.delete(name);
   }
 };
 
@@ -48,7 +48,7 @@ setTimeout(() => {
 
 http.createServer(async (req, res) => {
   const url = req.url === '/' ? '/index.html' : req.url;
-  const [s, folder, file] = url.split('/');
+  const [, folder, file] = url.split('/');
   if (folder === 'api') {
     const method = api.get(file);
     const body = [];
