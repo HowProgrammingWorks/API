@@ -1,0 +1,10 @@
+{
+  "name": "ws-api",
+  "version": "1.0.0",
+  "author": "Timur Shemsedinov <timur.shemsedinov@gmail.com>",
+  "description": "WS API Example",
+  "license": "MIT",
+  "dependencies": {
+    "websocket": "^1.0.28"
+  }
+}
