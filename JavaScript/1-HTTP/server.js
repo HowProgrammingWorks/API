@@ -22,7 +22,7 @@ const cacheFile = name => {
     const method = require(filePath);
     api.set(key, method);
   } catch (e) {
-    api.delete(name);
+    api.delete(key);
   }
 };
 
