@@ -4,12 +4,13 @@
     "es6": true,
     "node": true
   },
-  "globals": {
-    "memory": true
-  },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2020
+  },
+  "globals": {
+    "BigInt": true,
+    "memory": true
   },
   "rules": {
     "indent": [
@@ -28,7 +29,6 @@
       "error",
       "always"
     ],
-    "no-console": "off",
     "no-loop-func": [
       "error"
     ],
