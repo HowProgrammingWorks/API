@@ -3,7 +3,7 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-const Websocket = require('websocket').server;
+const WebSocket = require('ws');
 
 global.memory = new Map();
 const api = new Map();
@@ -60,19 +60,13 @@ const server = http.createServer(async (req, res) => {
   }
 }).listen(8000);
 
-const ws = new Websocket({
-  httpServer: server,
-  autoAcceptConnections: false
-});
+const ws = new WebSocket.Server({ server });
 
-ws.on('request', req => {
-  const connection = req.accept('', req.origin);
+ws.on('connection', connection => {
   console.log('Connected ' + connection.remoteAddress);
   connection.on('message', async message => {
-    const dataName = message.type + 'Data';
-    const data = message[dataName];
-    console.log('Received: ' + data);
-    const obj = JSON.parse(data);
+    console.log('Received: ' + message);
+    const obj = JSON.parse(message);
     const { method, args } = obj;
     const fn = api.get(method);
     try {
