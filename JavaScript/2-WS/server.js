@@ -10,7 +10,7 @@ const api = new Map();
 
 const apiPath = './api/';
 
-const cacheFile = name => {
+const cacheFile = (name) => {
   const filePath = apiPath + name;
   const key = path.basename(filePath, '.js');
   try {
@@ -27,14 +27,14 @@ const cacheFile = name => {
   }
 };
 
-const cacheFolder = path => {
+const cacheFolder = (path) => {
   fs.readdir(path, (err, files) => {
     if (err) return;
     files.forEach(cacheFile);
   });
 };
 
-const watch = path => {
+const watch = (path) => {
   fs.watch(path, (event, file) => {
     cacheFile(file);
   });
@@ -62,9 +62,9 @@ const server = http.createServer(async (req, res) => {
 
 const ws = new WebSocket.Server({ server });
 
-ws.on('connection', connection => {
+ws.on('connection', (connection) => {
   console.log('Connected ' + connection.remoteAddress);
-  connection.on('message', async message => {
+  connection.on('message', async (message) => {
     console.log('Received: ' + message);
     const obj = JSON.parse(message);
     const { method, args } = obj;

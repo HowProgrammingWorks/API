@@ -1,6 +1,6 @@
 'use strict';
 
-const buildAPI = methods => {
+const buildAPI = (methods) => {
   const api = {};
   for (const method of methods) {
     api[method] = (...args) => new Promise((resolve, reject) => {
@@ -10,7 +10,7 @@ const buildAPI = methods => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(args),
-      }).then(res => {
+      }).then((res) => {
         const { status } = res;
         if (status !== 200) {
           reject(new Error(`Status Code: ${status}`));
