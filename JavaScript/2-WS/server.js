@@ -62,8 +62,8 @@ const server = http.createServer(async (req, res) => {
 
 const ws = new WebSocket.Server({ server });
 
-ws.on('connection', (connection) => {
-  console.log('Connected ' + connection.remoteAddress);
+ws.on('connection', (connection, req) => {
+  console.log('Connected ' + req.socket.remoteAddress);
   connection.on('message', async (message) => {
     console.log('Received: ' + message);
     const obj = JSON.parse(message);
