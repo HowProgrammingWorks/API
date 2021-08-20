@@ -1,5 +1,7 @@
 'use strict';
 
+const memory = require('../memory.js');
+
 class Point {
   constructor(x, y) {
     this.x = x;

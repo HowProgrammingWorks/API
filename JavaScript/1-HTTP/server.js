@@ -4,7 +4,6 @@ const http = require('http');
 const path = require('path');
 const fs = require('fs');
 
-global.memory = new Map();
 const api = new Map();
 
 const apiPath = './api/';

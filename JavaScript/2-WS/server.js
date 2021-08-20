@@ -5,7 +5,6 @@ const path = require('path');
 const fs = require('fs');
 const WebSocket = require('ws');
 
-global.memory = new Map();
 const api = new Map();
 
 const apiPath = './api/';

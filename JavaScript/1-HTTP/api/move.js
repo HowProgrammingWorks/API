@@ -1,5 +1,7 @@
 'use strict';
 
+const memory = require('../memory.js');
+
 const move = (point, x, y) => {
   point.x += x;
   point.y += y;

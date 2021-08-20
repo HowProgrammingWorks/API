@@ -1,5 +1,7 @@
 'use strict';
 
+const memory = require('../memory.js');
+
 const rotate = (point, angle) => {
   const sin = Math.sin(angle);
   const cos = Math.cos(angle);

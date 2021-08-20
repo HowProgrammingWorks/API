@@ -1,5 +1,7 @@
 'use strict';
 
+const memory = require('../memory.js');
+
 const resize = (point, k) => {
   let { x, y } = point;
   x *= k;
