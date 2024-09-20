@@ -14,13 +14,13 @@ const cacheFile = (name) => {
   try {
     const libPath = require.resolve(filePath);
     delete require.cache[libPath];
-  } catch (e) {
+  } catch {
     return;
   }
   try {
     const method = require(filePath);
     api.set(key, method);
-  } catch (e) {
+  } catch {
     api.delete(key);
   }
 };
@@ -79,7 +79,7 @@ http.createServer(async (req, res) => {
     try {
       const data = await fs.promises.readFile(path);
       res.end(data);
-    } catch (err) {
+    } catch {
       httpError(res, 404, 'File is not found');
     }
   }
