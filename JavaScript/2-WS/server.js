@@ -15,13 +15,13 @@ const cacheFile = (name) => {
   try {
     const libPath = require.resolve(filePath);
     delete require.cache[libPath];
-  } catch (e) {
+  } catch {
     return;
   }
   try {
     const method = require(filePath);
     api.set(key, method);
-  } catch (e) {
+  } catch {
     api.delete(key);
   }
 };
@@ -53,7 +53,7 @@ const server = http.createServer(async (req, res) => {
   try {
     const data = await fs.promises.readFile(path);
     res.end(data);
-  } catch (err) {
+  } catch {
     res.statusCode = 404;
     res.end('"File is not found"');
   }
