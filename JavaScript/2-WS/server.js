@@ -46,7 +46,7 @@ setTimeout(() => {
   console.dir({ api });
 }, 1000);
 
-const server = http.createServer(async (req, res) => {
+const controller = async (req, res) => {
   const url = req.url === '/' ? '/index.html' : req.url;
   const [file] = url.substring(1).split('/');
   const path = `./static/${file}`;
@@ -57,7 +57,9 @@ const server = http.createServer(async (req, res) => {
     res.statusCode = 404;
     res.end('"File is not found"');
   }
-}).listen(8000);
+};
+
+const server = http.createServer(controller).listen(8000);
 
 const ws = new WebSocket.Server({ server });
 

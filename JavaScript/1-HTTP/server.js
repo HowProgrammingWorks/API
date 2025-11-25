@@ -57,7 +57,7 @@ const httpError = (res, status, message) => {
   res.end(`"${message}"`);
 };
 
-http.createServer(async (req, res) => {
+const controller = async (req, res) => {
   const url = req.url === '/' ? '/index.html' : req.url;
   const [first, second] = url.substring(1).split('/');
   if (first === 'api') {
@@ -83,4 +83,6 @@ http.createServer(async (req, res) => {
       httpError(res, 404, 'File is not found');
     }
   }
-}).listen(8000);
+};
+
+http.createServer(controller).listen(8000);
