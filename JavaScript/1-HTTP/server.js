@@ -9,7 +9,7 @@ const api = new Map();
 const apiPath = './api/';
 
 const cacheFile = (name) => {
-  const filePath = apiPath + name;
+  const filePath = `${apiPath}${name}`;
   const key = path.basename(filePath, '.js');
   try {
     const libPath = require.resolve(filePath);

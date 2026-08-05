@@ -10,7 +10,7 @@ const api = new Map();
 const apiPath = './api/';
 
 const cacheFile = (name) => {
-  const filePath = apiPath + name;
+  const filePath = `${apiPath}${name}`;
   const key = path.basename(filePath, '.js');
   try {
     const libPath = require.resolve(filePath);
@@ -64,9 +64,9 @@ const server = http.createServer(controller).listen(8000);
 const ws = new WebSocket.Server({ server });
 
 ws.on('connection', (connection, req) => {
-  console.log('Connected ' + req.socket.remoteAddress);
+  console.log(`Connected ${req.socket.remoteAddress}`);
   connection.on('message', async (message) => {
-    console.log('Received: ' + message);
+    console.log(`Received: ${message}`);
     const obj = JSON.parse(message);
     const { method, args } = obj;
     const fn = api.get(method);
